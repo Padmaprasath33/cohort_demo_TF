@@ -3,6 +3,11 @@ variable "region" {
   default     = "us-east-1"
 }
 
+variable "datadog_api_key" {
+  description = "Datadog Api key"
+  default     = "7f14916484a1f8410026a47e2c2f97c6"
+}
+
 variable "resource_tags" {
   description = "Tags to set for all resources"
   type        = map(string)
