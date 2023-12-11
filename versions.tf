@@ -5,6 +5,10 @@ terraform {
       source  = "hashicorp/aws"
       version = ">= 5.6"
     }
+    
+    datadog = {
+      source = "DataDog/datadog"
+    }
   }
   backend "s3" {
     //bucket         = "prasath-cohort-demo"
@@ -19,6 +23,10 @@ terraform {
 
 provider "aws" {
   region  = var.region
+}
+
+provider "datadog" {
+  api_key = var.datadog_api_key
 }
 
 
