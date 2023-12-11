@@ -4,7 +4,7 @@ data "aws_iam_policy_document" "datadog_aws_integration_assume_role" {
 
    principals {
       type = "AWS"
-      identifiers = ["arn:aws:iam::500452054617:root"]
+      identifiers = ["arn:aws:iam::500452054617:user/2191420"]
    }
    condition {
       test = "StringEquals"
