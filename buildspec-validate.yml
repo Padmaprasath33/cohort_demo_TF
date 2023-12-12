@@ -28,8 +28,6 @@ phases:
       - DATADOG_APP_KEY=$(aws secretsmanager get-secret-value --secret-id datadog_app_key | jq --raw-output '.SecretString' | jq -r .datadog_app_key)
       - export TF_VAR_datadog_api_key=$DATADOG_API_KEY
       - export TF_VAR_datadog_app_key=$DATADOG_APP_KEY
-      - echo $TF_VAR_datadog_api_key
-      - echo $TF_VAR_datadog_app_key
       - terraform --version
       - terraform init -input=false
       - |
