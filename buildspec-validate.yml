@@ -14,9 +14,6 @@ phases:
       - wget https://releases.hashicorp.com/terraform/"$TERRAFORM_VERSION"/terraform_"$TERRAFORM_VERSION"_linux_amd64.zip
       - unzip terraform_"$TERRAFORM_VERSION"_linux_amd64.zip
       - mv terraform /usr/local/bin/
-      - curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-      - unzip awscliv2.zip
-      - sudo ./aws/install
       - aws --version
   pre_build:
     on-failure: ABORT     
@@ -27,8 +24,8 @@ phases:
     commands:
       - cd "$CODEBUILD_SRC_DIR"
       - ls -lrt "$CODEBUILD_SRC_DIR"
-      - DATADOG_API_KEY=aws secretsmanager get-secret-value --secret-id datadog_keys
-      - DATADOG_APP_KEY=aws secretsmanager get-secret-value --secret-id datadog_app_key
+      - DATADOG_API_KEY=$(aws secretsmanager get-secret-value --secret-id datadog_keys)
+      - DATADOG_APP_KEY=$(aws secretsmanager get-secret-value --secret-id datadog_app_key)
       - export TF_VAR_datadog_api_key=$DATADOG_API_KEY
       - export TF_VAR_datadog_app_key=$DATADOG_APP_KEY
       - terraform --version
