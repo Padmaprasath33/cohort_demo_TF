@@ -33,7 +33,7 @@ phases:
         fi
       - |
         if [ "$ACTION" = "plan" ]; then
-          terraform plan -lock=false -input=false
+          terraform plan -var="datadog_api_key=7f14916484a1f8410026a47e2c2f97c6" -var="datadog_app_key=e168ad50d11be536078cb9861f7a0351cc9db0ee" -lock=false -input=false
         fi
       - |
         if [ "$ACTION" = "apply" ]; then
