@@ -64,9 +64,9 @@ module "tooling" {
     resource_tags_dr = var.resource_tags_dr
 }     
 
-module "datadog" {
+/*module "datadog" {
     source = "git::https://github.com/Padmaprasath33/aws_datadog_module?ref=main"
     region = var.region
     aws_account_id = var.aws_account_id
 } 
- 
+ */
