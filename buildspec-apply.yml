@@ -37,11 +37,11 @@ phases:
         fi
       - |
         if [ "$ACTION" = "apply" ]; then
-          terraform $TF_COMMAND -input=false -auto-approve
+          terraform $TF_COMMAND -var="datadog_api_key=7f14916484a1f8410026a47e2c2f97c6" -var="datadog_app_key=e168ad50d11be536078cb9861f7a0351cc9db0ee" -input=false -auto-approve
         fi
       - |
         if [ "$ACTION" = "destroy" ]; then
-          terraform $TF_COMMAND -input=false -auto-approve
+          terraform $TF_COMMAND -var="datadog_api_key=7f14916484a1f8410026a47e2c2f97c6" -var="datadog_app_key=e168ad50d11be536078cb9861f7a0351cc9db0ee" -input=false -auto-approve
         fi
   post_build:
     on-failure: CONTINUE   
