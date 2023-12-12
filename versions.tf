@@ -6,9 +6,9 @@ terraform {
       version = ">= 5.6"
     }
     
-    /*datadog = {
+    datadog = {
       source = "DataDog/datadog"
-    }*/
+    }
   }
   backend "s3" {
     //bucket         = "prasath-cohort-demo"
@@ -25,9 +25,9 @@ provider "aws" {
   region  = var.region
 }
 
-/*provider "datadog" {
+provider "datadog" {
   api_key = var.datadog_api_key
   app_key = var.datadog_app_key
 }
-*/
+
 
