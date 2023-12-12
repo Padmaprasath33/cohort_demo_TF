@@ -8,7 +8,7 @@ module "vpc" {
   resource_tags = var.resource_tags
   resource_tags_dr = var.resource_tags_dr
 
-} 
+}  
 
 module "s3_efs" {
     source = "git::https://github.com/Padmaprasath33/aws_storage_module?ref=main"

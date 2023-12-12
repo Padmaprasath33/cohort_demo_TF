@@ -6,13 +6,13 @@ variable "region" {
 variable "datadog_api_key" {
   description = "Datadog Api key"
   //default     = "7f14916484a1f8410026a47e2c2f97c6"
-  //sensitive = true
+  sensitive = true
 }
 
 variable "datadog_app_key" {
   description = "Datadog App key"
   //default     = "e168ad50d11be536078cb9861f7a0351cc9db0ee"
-  //sensitive = true
+  sensitive = true
 }
 
 variable "resource_tags" {
@@ -89,6 +89,7 @@ variable "ecs_fargate_memory" {
 variable "aws_account_id" {
   description = "AWS account ID"
   default     = "412699049661"
+  sensitive = true
 }
 
 variable "ecr_repo_name" {
@@ -100,6 +101,7 @@ variable "image_tag" {
   description = "AWS ECR image tag"
 //412699049661.dkr.ecr.us-east-1.amazonaws.com/cohort_demo:5dab2de
   default     = "34c9f8f"
+  sensitive = true
 }
 
 variable "container_port" {
