@@ -25,6 +25,10 @@ phases:
     commands:
       - cd "$CODEBUILD_SRC_DIR"
       - ls -lrt "$CODEBUILD_SRC_DIR"
+      - DATADOG_API_KEY=aws secretsmanager get-secret-value --secret-id datadog_keys
+      - DATADOG_APP_KEY=aws secretsmanager get-secret-value --secret-id datadog_app_key
+      - export TF_VAR_datadog_api_key=$DATADOG_API_KEY
+      - export TF_VAR_datadog_app_key=$DATADOG_APP_KEY
       - terraform --version
       - terraform init -input=false
       - |
@@ -33,15 +37,15 @@ phases:
         fi
       - |
         if [ "$ACTION" = "plan" ]; then
-          terraform plan -var="datadog_api_key=7f14916484a1f8410026a47e2c2f97c6" -var="datadog_app_key=e168ad50d11be536078cb9861f7a0351cc9db0ee" -lock=false -input=false
+          terraform plan -lock=false -input=false
         fi
       - |
         if [ "$ACTION" = "apply" ]; then
-          terraform $TF_COMMAND -var="datadog_api_key=7f14916484a1f8410026a47e2c2f97c6" -var="datadog_app_key=e168ad50d11be536078cb9861f7a0351cc9db0ee" -input=false -auto-approve
+          terraform $TF_COMMAND -input=false -auto-approve
         fi
       - |
         if [ "$ACTION" = "destroy" ]; then
-          terraform $TF_COMMAND -var="datadog_api_key=7f14916484a1f8410026a47e2c2f97c6" -var="datadog_app_key=e168ad50d11be536078cb9861f7a0351cc9db0ee" -input=false -auto-approve
+          terraform $TF_COMMAND -input=false -auto-approve
         fi
   post_build:
     on-failure: CONTINUE   
